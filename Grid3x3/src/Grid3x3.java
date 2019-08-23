@@ -20,11 +20,15 @@ public class Grid3x3 {
         GUI.setSize(300, 300);
         GUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Grabs user input for width and height.
-        System.out.println("Enter width: ");
+        // Grabs user input for width and height using option panes.
+        JOptionPane opane = new JOptionPane(JOptionPane.QUESTION_MESSAGE, JOptionPane.QUESTION_MESSAGE);
+        opane.setVisible(true);
+        int w = Integer.parseInt(JOptionPane.showInputDialog("Enter width:", 0));
+        int h = Integer.parseInt(JOptionPane.showInputDialog("Enter hours:", 0));
+        /* System.out.println("Enter width: ");
         int w = Integer.parseInt(scanner.nextLine());
         System.out.println("Enter height: ");
-        int h = Integer.parseInt(scanner.nextLine());
+        int h = Integer.parseInt(scanner.nextLine()); */
         // Set the grid size to the user defined width and height.
         pane.setLayout(new GridLayout(h,w));
 
