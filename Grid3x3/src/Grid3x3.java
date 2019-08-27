@@ -17,6 +17,7 @@ public class Grid3x3 {
     public static void main(String[] args) {
         // Declaration and init.
         String ans; // Used for the do while loop.
+        String opt; // Option switch user input.
 
         do {
             // Give properties to the frame.
@@ -29,7 +30,8 @@ public class Grid3x3 {
             JOptionPane opane = new JOptionPane(JOptionPane.QUESTION_MESSAGE, JOptionPane.QUESTION_MESSAGE);
             opane.setVisible(true);
             int w = Integer.parseInt(JOptionPane.showInputDialog("Enter width:", 3));
-            int h = Integer.parseInt(JOptionPane.showInputDialog("Enter hours:", 3));
+            int h = Integer.parseInt(JOptionPane.showInputDialog("Enter height:", 3));
+            opt = JOptionPane.showInputDialog("Which draw style? (random, checker)", "random");
 
             /* System.out.println("Enter width: ");
             int w = Integer.parseInt(scanner.nextLine());
@@ -41,7 +43,7 @@ public class Grid3x3 {
             // Loops through the amount of panels that needs to be created.
             // Panel # is calculated through user inputted wxh.
             for (int i = 0; i < (w * h); i++) {
-                createPanel();
+                createPanel(opt, i);
             }
 
             // Make the GUI visible to the user.
@@ -55,16 +57,35 @@ public class Grid3x3 {
 
     // createPanel
     // Creates a panel and adds it to the GUI.
-    private static void createPanel() {
-        // Declare random ints. for panel color.
-        int r1 = (int)(255 * Math.random());
-        int r2 = (int)(255 * Math.random());
-        int r3 = (int)(255 * Math.random());
-        // Init. new JPanel.
-        JPanel panel = new JPanel();
-        // Sets background color for the panel.
-        panel.setBackground(new Color(r1,r2,r3));
-        // Adds panel to GUI.
-        pane.add(panel);
+    // If statement controls user option between random and checker.
+    private static void createPanel(String opt, int i) {
+        if (opt.equals("random")) {
+            // Declare random ints. for panel color.
+            int r1 = (int) (255 * Math.random());
+            int r2 = (int) (255 * Math.random());
+            int r3 = (int) (255 * Math.random());
+            // Init. new JPanel.
+            JPanel panel = new JPanel();
+            // Sets background color for the panel.
+            panel.setBackground(new Color(r1, r2, r3));
+            // Adds panel to GUI.
+            pane.add(panel);
+        } else if (opt.equals("checker")) {
+            if (i % 2 == 0) {
+                // Init. new JPanel.
+                JPanel panel = new JPanel();
+                // Sets background color for the panel.
+                panel.setBackground(Color.WHITE);
+                // Adds panel to GUI.
+                pane.add(panel);
+            } else {
+                // Init. new JPanel.
+                JPanel panel = new JPanel();
+                // Sets background color for the panel.
+                panel.setBackground(Color.BLACK);
+                // Adds panel to GUI.
+                pane.add(panel);
+            }
+        }
     }
 }
