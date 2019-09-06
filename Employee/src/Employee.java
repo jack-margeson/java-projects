@@ -49,6 +49,17 @@ class Employee {
         my_years = employee.my_years;
     }
 
+    // Polymorphic fill constructor
+    Employee(String employee) {
+        my_first = employee.split(" ")[0];
+        my_last = employee.split(" ")[1];
+        my_nickname = employee.split(" ")[2];
+        my_hours = Integer.parseInt(employee.split(" ")[3]);
+        my_salary = Double.parseDouble(employee.split(" ")[4]);
+        my_id = Integer.parseInt(employee.split(" ")[5]);
+        my_years = Integer.parseInt(employee.split(" ")[6]);
+    }
+
     // Set functions for Employee.
     // employee.setFirst("Jack");
     void setFirst(String first) {

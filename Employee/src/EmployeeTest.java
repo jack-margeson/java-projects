@@ -16,11 +16,11 @@ public class EmployeeTest {
     // Main.
     public static void main(String[] args) {
         // Create array of employees.
-        Employee[] employees = new Employee[4];
+        Employee[] employees = new Employee[5];
 
         // Give properties to the frame.
         GUI.setTitle("Employee");
-        GUI.setSize(900, 190);
+        GUI.setSize(1200, 190);
         GUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         pane.setBackground(new Color(163, 255, 188));
         pane.setLayout(null);
@@ -49,32 +49,43 @@ public class EmployeeTest {
                 "----------<br/><html>"
                 + employees[2].getHTML());
 
+        // Polymorphic fill constructor test.
+        // Create employee.
+        employees[3] = new Employee("Jack Margeson Brother 5 10.55 605554 3");
+        // Create label.
+        JLabel lblPolyConstructor = new JLabel("<html>Polymorphic fill constructor<br/>" +
+                "----------<br/><html>"
+                + employees[3].getHTML());
+
         // User inputted fill constructor test.
-        // Create input panel and grab user input.
         // The function createEmployee is used to test the fill constructor, and this employee is copied.
         // Create employee.
-        employees[3] = new Employee(createEmployee());
+        employees[4] = new Employee(createEmployee());
         // Create label.
         JLabel lblUserConstructor = new JLabel("<html>User fill constructor<br/>" +
                 "----------<br/><html>"
-                + employees[3].getHTML());
+                + employees[4].getHTML());
+
 
         // Add GUI elements.
         pane.add(lblDefaultConstructor);
         pane.add(lblFillConstructor);
         pane.add(lblCopyConstructor);
+        pane.add(lblPolyConstructor);
         pane.add(lblUserConstructor);
 
         // Set location of labels.
         lblDefaultConstructor.setLocation(20,5);
         lblFillConstructor.setLocation(190, 5);
         lblCopyConstructor.setLocation(430,5);
-        lblUserConstructor.setLocation(670,5);
+        lblPolyConstructor.setLocation(670,5);
+        lblUserConstructor.setLocation(910,5);
 
         // Set size of labels.
         lblDefaultConstructor.setSize(250,150);
         lblFillConstructor.setSize(250,150);
         lblCopyConstructor.setSize(250,150);
+        lblPolyConstructor.setSize(250,150);
         lblUserConstructor.setSize(250,150);
 
         // Make the GUI visible to the user.
