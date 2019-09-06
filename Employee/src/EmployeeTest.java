@@ -15,6 +15,9 @@ public class EmployeeTest {
 
     // Main.
     public static void main(String[] args) {
+        // Create array of employees.
+        Employee[] employees = new Employee[4];
+
         // Give properties to the frame.
         GUI.setTitle("Employee");
         GUI.setSize(900, 190);
@@ -24,45 +27,37 @@ public class EmployeeTest {
 
         // Default constructor test.
         // Create employee.
-        Employee e1 = new Employee();
+        employees[0] = new Employee();
         // Create label.
         JLabel lblDefaultConstructor = new JLabel("<html>Default constructor<br/>" +
                 "----------<br/><html>"
-                + e1.getHTML());
+                + employees[0].getHTML());
 
         // Fill constructor test.
         // Create employee.
-        Employee e2 = new Employee("Jack", "Margeson", "Dutch", 8, 12.00, 605555, 2);
+        employees[1] = new Employee("Jack", "Margeson", "Dutch", 8, 12.00, 605555, 2);
         // Create label.
         JLabel lblFillConstructor = new JLabel("<html>Fill constructor<br/>" +
                 "----------<br/><html>"
-                + e2.getHTML());
+                + employees[1].getHTML());
 
         // Copy constructor test.
-        // Create employee--Employee e2 -> employee e3.
-        Employee e3 = new Employee(e2);
+        // Create employee--employees[1] -> employees[2].
+        employees[2] = new Employee(employees[1]);
         // Create label.
         JLabel lblCopyConstructor = new JLabel("<html>Copy constructor<br/>" +
                 "----------<br/><html>"
-                + e3.getHTML());
+                + employees[2].getHTML());
 
         // User inputted fill constructor test.
         // Create input panel and grab user input.
-        JOptionPane opane = new JOptionPane(JOptionPane.QUESTION_MESSAGE, JOptionPane.QUESTION_MESSAGE);
-        opane.setVisible(true);
-        String first = JOptionPane.showInputDialog("Enter first name:", "");
-        String last = JOptionPane.showInputDialog("Enter last name:", "");
-        String nickname = JOptionPane.showInputDialog("Enter nickname:", "");
-        int hours = Integer.parseInt(JOptionPane.showInputDialog("Enter hours:", 0));
-        double salary = Double.parseDouble(JOptionPane.showInputDialog("Enter salary:", 0));
-        int id = Integer.parseInt(JOptionPane.showInputDialog("Enter ID:", 0));
-        int years = Integer.parseInt(JOptionPane.showInputDialog("Enter years worked:", 0));
+        // The function createEmployee is used to test the fill constructor, and this employee is copied.
         // Create employee.
-        Employee e4 = new Employee(first, last, nickname, hours, salary, id, years);
+        employees[3] = new Employee(createEmployee());
         // Create label.
         JLabel lblUserConstructor = new JLabel("<html>User fill constructor<br/>" +
                 "----------<br/><html>"
-                + e4.getHTML());
+                + employees[3].getHTML());
 
         // Add GUI elements.
         pane.add(lblDefaultConstructor);
@@ -120,5 +115,18 @@ public class EmployeeTest {
         System.out.println("Fill constructor (from user input)" + "\n" +
                 "-----------" + "\n" +
                 e4.getString() + "\n"); */
+    }
+
+    private static Employee createEmployee() {
+        JOptionPane opane = new JOptionPane(JOptionPane.QUESTION_MESSAGE, JOptionPane.QUESTION_MESSAGE);
+        opane.setVisible(true);
+        String first = JOptionPane.showInputDialog("Enter first name:", "");
+        String last = JOptionPane.showInputDialog("Enter last name:", "");
+        String nickname = JOptionPane.showInputDialog("Enter nickname:", "");
+        int hours = Integer.parseInt(JOptionPane.showInputDialog("Enter hours:", 0));
+        double salary = Double.parseDouble(JOptionPane.showInputDialog("Enter salary:", 0));
+        int id = Integer.parseInt(JOptionPane.showInputDialog("Enter ID:", 0));
+        int years = Integer.parseInt(JOptionPane.showInputDialog("Enter years worked:", 0));
+        return(new Employee(first, last, nickname, hours, salary, id, years));
     }
 }
