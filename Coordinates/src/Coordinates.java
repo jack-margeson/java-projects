@@ -20,7 +20,8 @@ public class Coordinates{
     private static int x = -5;
     private static int y = -5;
     // This string is set to null in order to prevent paintComponent from freaking out.
-    private static String cstring = "";
+    private static String cstring = ""; // Used as a fixed coordinate string. (bottom output, graphically)
+    private static String c2string = ""; // Used as a true coordinate string. (top output, graphically)
 
     // Main program.
     public static void main(String[] args) {
@@ -42,6 +43,7 @@ public class Coordinates{
                 y = e.getY();
                 // Adjusted coordinate string for screen output.
                 cstring = "(" + (((pane.getWidth()/2) - e.getX())*-1) + ", " + ((pane.getHeight()/2) - e.getY()) + ")";
+                c2string = "(" + e.getX() + ", " + e.getY() + ")";
                 pane.repaint();
             }
         });
@@ -83,13 +85,14 @@ public class Coordinates{
             g2.drawLine(getWidth()/2, 0, getWidth()/2, getHeight());
             g2.drawLine(0, getHeight()/2, getWidth(), getHeight()/2);
 
-
             // Text properties.
             g.setColor(Color.black);
             // Draw label showing origin.
             g.drawString("(0, 0)", getWidth()/2 + 10, (getHeight()/2) - 5);
             // Draw label showing coordinates.
             g.drawString(cstring, x + 5, y - 5);
+            // Draw label showing true coordinates.
+            g.drawString(c2string, x + 5, y - 25);
 
             // Point properties.
             g2.setColor(Color.red);
