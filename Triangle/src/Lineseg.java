@@ -38,6 +38,6 @@ public class Lineseg {
 
     // getString.
     public String getString() {
-        return("(" + this.getMy_bp().getString() + ", " + this.getMy_ep().toString() + ")");
+        return("(" + this.getMy_bp().getString() + ", " + this.getMy_ep().getString() + ")");
     }
 }
