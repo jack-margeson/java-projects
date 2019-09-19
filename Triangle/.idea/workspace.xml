@@ -16,6 +16,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1QhHqlggwTTbGvDBYnzNCknypf3" />
+  <component name="PropertiesComponent">
+    <property name="restartRequiresConfirmation" value="false" />
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
