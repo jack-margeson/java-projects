@@ -15,7 +15,8 @@ import java.awt.event.MouseEvent;
 public class TriangleTest{
     // Declarations and init.
     // Classes.
-    private static JFrame frame = new JFrame(); // GUI declaration from JFrame.
+    private static JFrame frame = new JFrame(); // GUI declaration from JFrame. Coordinate plane.
+    private static JFrame frame2 = new JFrame(); // GUI declaration from JFrame. Triangle calculation results.
     private static ColorPanel pane = new ColorPanel(new Color(255, 255, 255)); // Panel from ColorPanel.
 
     // Variables used for drawing labels.
@@ -41,7 +42,6 @@ public class TriangleTest{
     public static void main(String[] args) {
         // Set JFrame properties.
         frame.setSize(500, 500);
-        // Set ColorPanel properties.
         // Add ColorPanel to frame.
         frame.add(pane);
 
@@ -85,7 +85,13 @@ public class TriangleTest{
 
     private static void triangle() {
         // Declare triangle.
-        // Triangle calculations.
+
+        // Set JFrame properties.
+        frame2.setSize(500, 500);
+        // Show results frame to user.
+        frame2.setVisible(true);
+
+        // Print triangle for debugging.
     }
 
     // ColorPanel class

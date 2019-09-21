@@ -1,7 +1,7 @@
 class Point {
     // Private data.
-    private int my_x;
-    private int my_y;
+    private float my_x;
+    private float my_y;
 
     // Constructors.
     // Default constructor.
@@ -22,10 +22,10 @@ class Point {
 
     // Gets and sets.
     // Gets.
-    public int getMy_x() {
+    public float getMy_x() {
         return my_x;
     }
-    public int getMy_y() {
+    public float getMy_y() {
         return my_y;
     }
     // Sets.
@@ -37,7 +37,8 @@ class Point {
     }
 
     // getString.
-    public String getString() {
+    @Override
+    public String toString() {
         return("(" + this.getMy_x() + ", " + this.getMy_y() + ")");
     }
 }

@@ -36,8 +36,20 @@ public class Lineseg {
         this.my_ep = my_ep;
     }
 
-    // getString.
-    public String getString() {
-        return("(" + this.getMy_bp().getString() + ", " + this.getMy_ep().getString() + ")");
+    // Lineseg member functions.
+    // slope
+    // Returns the slope of the lineseg using slope formula.
+    public double slope() {
+        return((my_ep.getMy_y() - my_bp.getMy_y())/(my_ep.getMy_x()-my_bp.getMy_x()));
+    }
+    // distance
+    // Returns the distance of the lineseg.
+    public double distance() {
+        return(Math.sqrt(Math.pow(my_ep.getMy_x() + my_bp.getMy_x(), 2) + Math.pow(my_ep.getMy_y() + my_ep.getMy_y(), 2)));
+    }
+
+    @Override
+    public String toString() {
+        return("(" + this.getMy_bp().toString() + ", " + this.getMy_ep().toString() + ")");
     }
 }
