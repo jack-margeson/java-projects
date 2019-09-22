@@ -56,7 +56,12 @@ public class Triangle {
     // perimeter
     // Returns the perimeter of the triangle.
     public double perimeter() {
-        return(my_linesegs[1].distance() + my_linesegs[2].distance() + my_linesegs[3].distance());
+        return(my_linesegs[0].distance() + my_linesegs[1].distance() + my_linesegs[2].distance());
+    }
+    // getDistances
+    // Returns distances of all linesegs in a string (for checking calculations).
+    public String getDistances() {
+        return(my_linesegs[0].distance() + ", " + my_linesegs[1].distance() + ", " + my_linesegs[2].distance());
     }
 
     // getString.

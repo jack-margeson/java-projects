@@ -84,7 +84,8 @@ public class TriangleTest{
     }
 
     private static void triangle() {
-        // Declare triangle.
+        // Declare triangle using point constructor.
+        Triangle t1 = new Triangle(new Point(x1, y1), new Point(x2, y2), new Point(x3, y3));
 
         // Set JFrame properties.
         frame2.setSize(500, 500);
@@ -92,6 +93,12 @@ public class TriangleTest{
         frame2.setVisible(true);
 
         // Print triangle for debugging.
+        System.out.println("Triangle" + "\n" +
+                "Is it a triangle?: " + t1.isTri() + "\n" +
+                "Kind of triangle: " + t1.kind() + "\n" +
+                "Area: " + t1.area() + "\n" +
+                "Perimeter: " + t1.perimeter() + "\n" +
+                "Line segment lengths: " + t1.getDistances());
     }
 
     // ColorPanel class
