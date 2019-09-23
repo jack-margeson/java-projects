@@ -28,6 +28,13 @@ public class TriangleTest{
     private static int y2 = -5;
     private static int x3 = -5;
     private static int y3 = -5;
+
+    private static int x4 = -5;
+    private static int y4 = -5;
+    private static int x5 = -5;
+    private static int y5 = -5;
+    private static int x6 = -5;
+    private static int y6 = -5;
     // These strings are set to null in order to prevent paintComponent from freaking out.
     private static String cstring1 = ""; // Used as a fixed coordinate string. (bottom output, graphically)
     private static String c2string1 = ""; // Used as a true coordinate string. (top output, graphically)
@@ -35,6 +42,13 @@ public class TriangleTest{
     private static String c2string2 = "";
     private static String cstring3 = "";
     private static String c2string3 = "";
+
+    private static String cstring4 = "";
+    private static String c2string4 = "";
+    private static String cstring5 = "";
+    private static String c2string5 = "";
+    private static String cstring6 = "";
+    private static String c2string6 = "";
 
     private static int pcount = 0; // Point counter on click.
 
@@ -68,8 +82,24 @@ public class TriangleTest{
                         x3 = e.getX();
                         y3 = e.getY();
                         pcount++;
+                        break;
+                    case 3:
+                        x4 = e.getX();
+                        y4 = e.getY();
+                        pcount++;
+                        break;
+                    case 4:
+                        x5 = e.getX();
+                        y5 = e.getY();
+                        pcount++;
+                        break;
+                    case 5:
+                        x6 = e.getX();
+                        y6 = e.getY();
+                        pcount++;
                         triangle();
                         break;
+
                 }
                 // Adjusted coordinate string for screen output.
                 cstring1 = "(" + (((pane.getWidth()/2) - x1)*-1) + ", " + ((pane.getHeight()/2) - y1) + ")";
@@ -78,6 +108,13 @@ public class TriangleTest{
                 c2string2 = "(" + x2 + ", " + y2 + ")";
                 cstring3 = "(" + (((pane.getWidth()/2) - x3)*-1) + ", " + ((pane.getHeight()/2) - y3) + ")";
                 c2string3 = "(" + x3 + ", " + y3 + ")";
+
+                cstring4 = "(" + (((pane.getWidth()/2) - x4)*-1) + ", " + ((pane.getHeight()/2) - y4) + ")";
+                c2string4 = "(" + x4 + ", " + y4 + ")";
+                cstring5 = "(" + (((pane.getWidth()/2) - x5)*-1) + ", " + ((pane.getHeight()/2) - y5) + ")";
+                c2string5 = "(" + x5 + ", " + y5 + ")";
+                cstring6 = "(" + (((pane.getWidth()/2) - x6)*-1) + ", " + ((pane.getHeight()/2) - y6) + ")";
+                c2string6 = "(" + x6 + ", " + y6 + ")";
                 pane.repaint();
             }
         });
@@ -86,6 +123,8 @@ public class TriangleTest{
     private static void triangle() {
         // Declare triangle using point constructor.
         Triangle t1 = new Triangle(new Point(x1, y1), new Point(x2, y2), new Point(x3, y3));
+        Triangle t2 = new Triangle(new Point(x4, y4), new Point(x5, y5), new Point(x6, y6));
+
 
         // Set JFrame properties.
         frame2.setSize(500, 500);
@@ -93,12 +132,19 @@ public class TriangleTest{
         frame2.setVisible(true);
 
         // Print triangle for debugging.
-        System.out.println("Triangle" + "\n" +
+        System.out.println("Triangle #1" + "\n" +
                 "Is it a triangle?: " + t1.isTri() + "\n" +
                 "Kind of triangle: " + t1.kind() + "\n" +
                 "Area: " + t1.area() + "\n" +
                 "Perimeter: " + t1.perimeter() + "\n" +
                 "Line segment lengths: " + t1.getDistances());
+        // Print triangle for debugging.
+        System.out.println("Triangle #2" + "\n" +
+                "Is it a triangle?: " + t2.isTri() + "\n" +
+                "Kind of triangle: " + t2.kind() + "\n" +
+                "Area: " + t2.area() + "\n" +
+                "Perimeter: " + t2.perimeter() + "\n" +
+                "Line segment lengths: " + t2.getDistances());
     }
 
     // ColorPanel class
@@ -147,10 +193,16 @@ public class TriangleTest{
             g.drawString(cstring1, x1 + 5, y1 - 5);
             g.drawString(cstring2, x2 + 5, y2 - 5);
             g.drawString(cstring3, x3 + 5, y3 - 5);
+            g.drawString(cstring4, x4 + 5, y4 - 5);
+            g.drawString(cstring5, x5 + 5, y5 - 5);
+            g.drawString(cstring6, x6 + 5, y6 - 5);
             // Draw label showing true coordinates.
             g.drawString(c2string1, x1 + 5, y1 - 25);
             g.drawString(c2string2, x2 + 5, y2 - 25);
             g.drawString(c2string3, x3 + 5, y3 - 25);
+            g.drawString(c2string4, x4 + 5, y4 - 25);
+            g.drawString(c2string5, x5 + 5, y5 - 25);
+            g.drawString(c2string6, x6 + 5, y6 - 25);
 
             // Point properties.
             g2.setColor(Color.red);
@@ -163,8 +215,12 @@ public class TriangleTest{
             g2.drawLine(x2, y2, x2, y2);
             g2.drawLine(x3, y3, x3, y3);
 
+            g2.drawLine(x4, y4, x4, y4);
+            g2.drawLine(x5, y5, x5, y5);
+            g2.drawLine(x6, y6, x6, y6);
+
             // If all three points have been drawn...
-            if (pcount == 3) {
+            if (pcount >= 3) {
                 // Triangle line properties.
                 g2.setColor(Color.blue);
                 g2.setStroke(new BasicStroke(2));
@@ -173,6 +229,16 @@ public class TriangleTest{
                 g2.drawLine(x1, y1, x2, y2);
                 g2.drawLine(x2, y2, x3, y3);
                 g2.drawLine(x3, y3, x1, y1);
+            }
+            if (pcount >= 6) {
+                // Triangle line properties.
+                g2.setColor(Color.green);
+                g2.setStroke(new BasicStroke(2));
+
+                // Draw lines.
+                g2.drawLine(x4, y4, x5, y5);
+                g2.drawLine(x5, y5, x6, y6);
+                g2.drawLine(x6, y6, x4, y4);
             }
         }
     }

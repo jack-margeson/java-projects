@@ -40,12 +40,12 @@ public class Triangle {
     // isTri
     // Returns if the drawn shape is a triangle.
     public boolean isTri() {
-        return(true);
+        return this.area() != 0;
     }
     // kind
     // Returns the type of triangle in string format.
     public String kind() {
-        return("Right");
+        return("Acute");
     }
     // area
     // Returns the area of the triangle.
