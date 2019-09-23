@@ -17,6 +17,7 @@ public class TriangleTest{
     // Classes.
     private static JFrame frame = new JFrame(); // GUI declaration from JFrame. Coordinate plane.
     private static JFrame frame2 = new JFrame(); // GUI declaration from JFrame. Triangle calculation results.
+    private static Container pane2 = frame2.getContentPane(); // GUI declaration from JPanel. Triangle calculation results.
     private static ColorPanel pane = new ColorPanel(new Color(255, 255, 255)); // Panel from ColorPanel.
 
     // Variables used for drawing labels.
@@ -122,14 +123,28 @@ public class TriangleTest{
 
     private static void triangle() {
         // Declare triangle using point constructor.
-        Triangle t1 = new Triangle(new Point(x1, y1), new Point(x2, y2), new Point(x3, y3));
-        Triangle t2 = new Triangle(new Point(x4, y4), new Point(x5, y5), new Point(x6, y6));
+        Triangle t1 = new Triangle(new Point(x1, y1), new Point(x2, y2), new Point(x3, y3), pane.getWidth(), pane.getHeight());
+        Triangle t2 = new Triangle(new Point(x4, y4), new Point(x5, y5), new Point(x6, y6), pane.getWidth(), pane.getHeight());
 
 
         // Set JFrame properties.
         frame2.setSize(500, 500);
+        // Create labels.
+        JLabel lblt1 = new JLabel(t1.toHTML());
+        JLabel lblt2 = new JLabel(t2.toHTML());
+        // Add elements to pane.
+        pane2.add(lblt1);
+        pane2.add(lblt2);
+        // Label properties.
+        // Size.
+        lblt1.setSize(200, 200);
+        lblt2.setSize(200, 200);
+        // Location.
+        lblt1.setLocation(0, 0);
+        lblt2.setLocation(0, 200);
         // Show results frame to user.
         frame2.setVisible(true);
+
 
         // Print triangle for debugging.
         System.out.println("Triangle #1" + "\n" +

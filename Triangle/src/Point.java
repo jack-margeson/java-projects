@@ -1,7 +1,7 @@
 class Point {
     // Private data.
-    private float my_x;
-    private float my_y;
+    private double my_x;
+    private double my_y;
 
     // Constructors.
     // Default constructor.
@@ -19,13 +19,18 @@ class Point {
         my_x = p.my_x;
         my_y = p.my_y;
     }
+    // Double constructor.
+    public Point(double v, double v1) {
+        my_x = (float) v;
+        my_y = (float) v1;
+    }
 
     // Gets and sets.
     // Gets.
-    public float getMy_x() {
+    public double getMy_x() {
         return my_x;
     }
-    public float getMy_y() {
+    public double getMy_y() {
         return my_y;
     }
     // Sets.

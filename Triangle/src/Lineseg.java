@@ -45,7 +45,7 @@ public class Lineseg {
     // distance
     // Returns the distance of the lineseg.
     public double distance() {
-        return(Math.sqrt(Math.pow(my_ep.getMy_x() + my_bp.getMy_x(), 2) + Math.pow(my_ep.getMy_y() + my_ep.getMy_y(), 2)));
+        return(Math.sqrt(Math.pow(my_ep.getMy_x() - my_bp.getMy_x(), 2) + Math.pow(my_ep.getMy_y() - my_ep.getMy_y(), 2)));
     }
 
     @Override

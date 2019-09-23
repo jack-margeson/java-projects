@@ -16,10 +16,13 @@ public class Triangle {
         my_linesegs[2] = l3;
     }
     // Point fill constructor.
-    Triangle(Point p1, Point p2, Point p3) {
-        my_linesegs[0] = new Lineseg(p1, p2);
-        my_linesegs[1] = new Lineseg(p2, p3);
-        my_linesegs[2] = new Lineseg(p3, p1);
+    Triangle(Point p1, Point p2, Point p3, double w, double h) {
+        Point np1 = new Point((w/2 - p1.getMy_x()*-1), (h/2 - p1.getMy_y()));
+        Point np2 = new Point((w/2 - p2.getMy_x()*-1), (h/2 - p2.getMy_y()));
+        Point np3 = new Point((w/2 - p3.getMy_x()*-1), (h/2 - p3.getMy_y()));
+        my_linesegs[0] = new Lineseg(np1, np2);
+        my_linesegs[1] = new Lineseg(np2, np3);
+        my_linesegs[2] = new Lineseg(np3, np1);
     }
     // Copy constructor.
     Triangle(Triangle t) {
@@ -47,16 +50,16 @@ public class Triangle {
     public String kind() {
         return("Acute");
     }
+    // perimeter
+    // Returns the perimeter of the triangle.
+    public double perimeter() {
+        return((my_linesegs[0].distance()) + (my_linesegs[1].distance()) + (my_linesegs[2].distance()));
+    }
     // area
     // Returns the area of the triangle.
     public double area() {
         double p = this.perimeter()/2;
         return(Math.sqrt(p * (p - my_linesegs[0].distance()) * (p - my_linesegs[1].distance()) * (p - my_linesegs[2].distance())));
-    }
-    // perimeter
-    // Returns the perimeter of the triangle.
-    public double perimeter() {
-        return(my_linesegs[0].distance() + my_linesegs[1].distance() + my_linesegs[2].distance());
     }
     // getDistances
     // Returns distances of all linesegs in a string (for checking calculations).
@@ -70,5 +73,14 @@ public class Triangle {
         return(my_linesegs[0].toString() + "\n" +
                 my_linesegs[1].toString() + "\n" +
                 my_linesegs[2].toString());
+    }
+    public String toHTML() {
+        return("<html>" + "Triangle:" + "<br>" +
+                "Triangle?: " + this.isTri() + "<br>" +
+                "Area: " + this.area() + "<br>" +
+                "Perimeter: " + this.perimeter() + "<br>" +
+                "Kind: " + this.kind() + "<br>" +
+                "Line segment lengths: " + this.getDistances() + "</html>"
+                );
     }
 }
