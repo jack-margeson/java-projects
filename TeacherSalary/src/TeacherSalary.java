@@ -15,7 +15,11 @@ public class TeacherSalary {
     private static Container pane = GUI.getContentPane(); // pane declaration from Container.
     private static JOptionPane optionPane = new JOptionPane(JOptionPane.QUESTION_MESSAGE, JOptionPane.QUESTION_MESSAGE); // JOptionPane, used for getting user input through the GUI.
     private static String ans; // used for answering questions.
+    // Teacher variables.
     private static Teacher t1; // Teacher.
+    private static double salary = 0;
+    private static int years = 0;
+    private static String degree = "";
 
     // Main program.
     public static void main(String[] args) {
@@ -48,20 +52,18 @@ public class TeacherSalary {
         GUI.setVisible(true);
     }
 
+    // User input for creating a teacher.
     private static void teacherFromInput() {
         optionPane.setVisible(true);
-        double salary = Double.parseDouble(JOptionPane.showInputDialog("Input teacher's base salary: ", "40000"));
-        int years = Integer.parseInt(JOptionPane.showInputDialog("Input teacher's years worked: ", "3"));
-        String degree = JOptionPane.showInputDialog("Input teacher's degree (masters/bachelors): ", "masters");
+        salary = Double.parseDouble(JOptionPane.showInputDialog("Input teacher's base salary: ", "40000"));
+        years = Integer.parseInt(JOptionPane.showInputDialog("Input teacher's years worked: ", "3"));
+        degree = JOptionPane.showInputDialog("Input teacher's degree (masters/bachelors): ", "masters");
 
-        t1 = new Teacher(salary, years, degree);
+        t1 = new Teacher(salary, years, degree, getSalary());
     }
 
+    // File input for creating a teacher.
     private static void teacherFromFile() {
-        double salary = 0;
-        int years = 0;
-        String degree = "";
-
         try {
             BufferedReader br = new BufferedReader(new FileReader("teacher.txt"));
             String input;
@@ -84,6 +86,10 @@ public class TeacherSalary {
         } catch(IOException err) {
             System.err.println("IO error.");
         }
-        t1 = new Teacher(salary, years, degree);
+        t1 = new Teacher(salary, years, degree, getSalary());
+    }
+
+    private static double getSalary() {
+        return(0);
     }
 }
