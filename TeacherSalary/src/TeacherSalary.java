@@ -12,6 +12,7 @@ import java.io.IOException;
 public class TeacherSalary {
     // Declarations and init.
     private static JFrame GUI = new JFrame(); // New JFrame from Swing.
+    private static JTable table; // Create table object.
     private static Container pane = GUI.getContentPane(); // pane declaration from Container.
     private static JOptionPane optionPane = new JOptionPane(JOptionPane.QUESTION_MESSAGE, JOptionPane.QUESTION_MESSAGE); // JOptionPane, used for getting user input through the GUI.
     private static String ans; // used for answering questions.
@@ -25,25 +26,35 @@ public class TeacherSalary {
     public static void main(String[] args) {
         // Give properties to the GUI.
         GUI.setTitle("Teacher Salary");
-        GUI.setSize(200, 200);
+        GUI.setSize(580, 355);
         GUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         // Give properties to the pane.
         pane.setBackground(new Color(163, 255, 188));
         pane.setLayout(null);
 
+
         // Get user input through optionPane.
         optionPane.setVisible(true);
-        String ans = JOptionPane.showInputDialog("Input teacher or load from file? (input/file): ", "input");
+        String ans = JOptionPane.showInputDialog("Input teacher or load from file? (input/file): ", "file");
         if (ans.equals("input")) {
             teacherFromInput();
         } else {
             teacherFromFile();
         }
 
+        // Get table.
+        String[] tableTitles = new String[]{"Years", "Bachelors", "Masters", "PhD"};
+        table = new JTable(t1.getSalaryTable(), tableTitles);
+        // JTable properties.
+        table.setLocation(0,0);
+        table.setSize(400,335);
+        // Add table to pane2.
+        pane.add(table);
+
         // Set JLabel.
         JLabel l1 = new JLabel(t1.toHTML());
         // JLabel properties.
-        l1.setLocation(35, -15);
+        l1.setLocation(420, 75);
         l1.setSize(200, 200);
         // Add label to pane.
         pane.add(l1);
@@ -57,9 +68,9 @@ public class TeacherSalary {
         optionPane.setVisible(true);
         salary = Double.parseDouble(JOptionPane.showInputDialog("Input teacher's base salary: ", "40000"));
         years = Integer.parseInt(JOptionPane.showInputDialog("Input teacher's years worked: ", "3"));
-        degree = JOptionPane.showInputDialog("Input teacher's degree (masters/bachelors): ", "masters");
+        degree = JOptionPane.showInputDialog("Input teacher's degree (bachelors/masters/phd): ", "masters");
 
-        t1 = new Teacher(salary, years, degree, getSalary());
+        t1 = new Teacher(salary, years, degree);
     }
 
     // File input for creating a teacher.
@@ -86,10 +97,6 @@ public class TeacherSalary {
         } catch(IOException err) {
             System.err.println("IO error.");
         }
-        t1 = new Teacher(salary, years, degree, getSalary());
-    }
-
-    private static double getSalary() {
-        return(0);
+        t1 = new Teacher(salary, years, degree);
     }
 }
