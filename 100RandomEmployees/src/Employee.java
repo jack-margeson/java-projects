@@ -10,7 +10,6 @@ public class Employee {
     private double my_salary;
     private int my_id;
     private int my_years;
-    private int my_dependents;
 
     // Constructors.
     // Default constructor.
@@ -21,17 +20,15 @@ public class Employee {
         this.my_salary = 0;
         this.my_id = 0;
         this.my_years = 0;
-        this.my_dependents = 0;
     }
     // Fill constructor.
-    public Employee(String my_first, String my_last, int my_hours, double my_salary, int my_id, int my_years, int my_dependents) {
+    public Employee(String my_first, String my_last, int my_hours, double my_salary, int my_id, int my_years) {
         this.my_first = my_first;
         this.my_last = my_last;
         this.my_hours = my_hours;
         this.my_salary = my_salary;
         this.my_id = my_id;
         this.my_years = my_years;
-        this.my_dependents = my_dependents;
     }
 
     // Gets and sets.
@@ -54,9 +51,6 @@ public class Employee {
     public int getMy_years() {
         return my_years;
     }
-    public int getMy_dependents() {
-        return my_dependents;
-    }
     // Sets.
     public void setMy_first(String my_first) {
         this.my_first = my_first;
@@ -76,9 +70,6 @@ public class Employee {
     public void setMy_years(int my_years) {
         this.my_years = my_years;
     }
-    public void setMy_dependents(int my_dependents) {
-        this.my_dependents = my_dependents;
-    }
 
     // Member functions.
     // toString
@@ -88,7 +79,6 @@ public class Employee {
                 "Hours worked: " + this.my_hours + "\n" +
                 "Salary: $" + this.my_salary + "\n" +
                 "ID: " + this.my_id + "\n" +
-                "Years worked: " + this.my_years + "\n" +
-                "Dependants: " + this.my_dependents) + "\n";
+                "Years worked: " + this.my_years + "\n");
     }
 }

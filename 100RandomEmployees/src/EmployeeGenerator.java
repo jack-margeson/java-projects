@@ -6,12 +6,12 @@ import java.util.Random;
 
 public class EmployeeGenerator {
     // Private data.
-    private Employee[] my_employees;
+    private PayrollEmployee[] my_employees;
 
     // Constructors.
     // Default (random) constructor.
     EmployeeGenerator(int i) {
-        Employee[] e = new Employee[i];
+        PayrollEmployee[] e = new PayrollEmployee[i];
         String[] first = new String[101];
         String[] last = new String[101];
         Random r = new Random();
@@ -42,10 +42,10 @@ public class EmployeeGenerator {
 
         // Assign employee data.
         for (int k = 0; k < i; k++) {
-            e[k] = new Employee(first[r.nextInt(100) + 1], // first name
+            e[k] = new PayrollEmployee(first[r.nextInt(100) + 1], // first name
                     last[r.nextInt(100) + 1], // last name
                     r.nextInt(24) + 1, // hours
-                    r.nextDouble() * 100000, // salary
+                    (Math.round((r.nextDouble() * 100000)*100.0))/100.0, // salary
                     1001 + k, // id number
                     r.nextInt(20) + 1, // years worked
                     r.nextInt(11) + 1); // dependants
@@ -56,11 +56,11 @@ public class EmployeeGenerator {
 
     // Gets and sets.
     // Gets.
-    public Employee[] getMy_employees() {
+    public PayrollEmployee[] getMy_employees() {
         return my_employees;
     }
     // Sets.
-    public void setMy_employees(Employee[] my_employees) {
+    public void setMy_employees(PayrollEmployee[] my_employees) {
         this.my_employees = my_employees;
     }
 }
