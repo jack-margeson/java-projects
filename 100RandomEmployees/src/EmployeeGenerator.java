@@ -1,5 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.net.URL;
 import java.util.Scanner;
 import java.util.Random;
@@ -24,11 +23,10 @@ public class EmployeeGenerator {
                 first[j] = scanner.nextLine();
                 j++;
             }
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
+        } catch (FileNotFoundException err) {
+            err.printStackTrace();
         }
         // Load last names from file.
-// Load first names from file.
         try {
             Scanner scanner = new Scanner(new File("./src/last.txt"));
             int j = 0;
@@ -36,8 +34,8 @@ public class EmployeeGenerator {
                 last[j] = scanner.nextLine();
                 j++;
             }
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
+        } catch (FileNotFoundException err) {
+            err.printStackTrace();
         }
 
         // Assign employee data.
@@ -52,6 +50,25 @@ public class EmployeeGenerator {
         }
         // Return array of employees.
         my_employees = e;
+    }
+    // saveEmployees
+    public void saveEmployees(String filename) {
+        try {
+            Writer writer = new FileWriter(filename);
+            for (int i = 0; i < this.my_employees.length;i++) {
+                writer.write(my_employees[i].getMy_first() + ", " +
+                        my_employees[i].getMy_last() + ", " +
+                        my_employees[i].getMy_hours() + ", " +
+                        my_employees[i].getMy_salary() + ", " +
+                        my_employees[i].getMy_id() + ", " +
+                        my_employees[i].getMy_years() + ", " +
+                        my_employees[i].getMy_dependents() + "\n");
+            }
+            writer.flush();
+            writer.close();
+        } catch (IOException err){
+            err.printStackTrace();
+        }
     }
 
     // Gets and sets.
