@@ -46,7 +46,7 @@ public class EmployeeGenerator {
                     (Math.round((r.nextDouble() * 100000)*100.0))/100.0, // salary
                     1001 + k, // id number
                     r.nextInt(20) + 1, // years worked
-                    r.nextInt(11) + 1); // dependants
+                    r.nextInt(11) + 1); // dependents
         }
         // Return array of employees.
         my_employees = e;
