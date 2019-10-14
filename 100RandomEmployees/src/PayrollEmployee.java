@@ -32,6 +32,6 @@ public class PayrollEmployee extends Employee {
                 "Salary: $" + super.getMy_salary() + "\n" +
                 "ID: " + super.getMy_id() + "\n" +
                 "Years worked: " + super.getMy_years() + "\n" +
-                "Dependants: " + this.my_dependents + "\n");
+                "Dependents: " + this.my_dependents + "\n");
     }
 }
