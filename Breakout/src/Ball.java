@@ -14,7 +14,7 @@ public class Ball  {
     // Default constructor.
     public Ball() {
         this.my_centerX = 175;
-        this.my_centerY = 300;
+        this.my_centerY = 200;
         this.my_radius = 5;
         this.my_color = new Color(255, 255, 255);
     }

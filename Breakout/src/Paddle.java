@@ -39,7 +39,7 @@ public class Paddle  {
     // Default constructor.
     public Paddle() {
         this.my_x = 300;
-        this.my_y = 500;
+        this.my_y = 350;
         this.my_length = 50;
         this.my_color = new Color(255, 255, 255);
     }
