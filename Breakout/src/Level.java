@@ -49,4 +49,16 @@ public class Level {
         }
         return true;
     }
+    // getScore();
+    // Gets the score (how many bricks are broken.
+    public int getScore() {
+        int score = 0;
+        for (Brick my_brick : my_bricks) {
+            if (my_brick.isMy_status()) {
+                score++;
+            }
+        }
+        score--;
+        return score;
+    }
 }

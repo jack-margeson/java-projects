@@ -23,6 +23,7 @@ public class Breakout {
     private static Ball ball = new Ball(); // Ball that moves around the screen.
     private static Paddle paddle = new Paddle(); // Paddle controllable with the mouse cursor.
     private static Level level = new Level(); // ArrayList of breakable bricks.
+    private static HighScore highScore = new HighScore(); // Highest score from file.
     private static int lives = 3;
 
     // Main program.
@@ -112,14 +113,15 @@ public class Breakout {
     // Game over function.
     private static void gameOver(int condition) {
         System.out.println("Game over!");
+        System.out.println("Your score: " + level.getScore());
         // Stop timer.
         timer.cancel();
         timer.purge();
         switch (condition) {
             case 0: // Game loss
                 System.out.println("You lose.");
+                highScore.save(level.getScore());
                 break;
-
             case 1: // Game win
                 System.out.println("You win!");
                 break;
