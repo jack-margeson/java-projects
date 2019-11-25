@@ -3,6 +3,9 @@ Matrix class for Matrix Lab.
 Jack Margeson, 11/11/2019 */
 
 import java.awt.desktop.SystemEventListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 public class Matrix {
     // Private data.
@@ -16,6 +19,29 @@ public class Matrix {
     // Fill constructor.
     public Matrix(int width, int height) {
         this.matrix = new int[width][height];
+    }
+    // File constructor.
+    public Matrix(String filename) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(filename));
+            String input;
+            int i = 0, j = 0;
+            int width = 0, height = 0;
+            while ((input = br.readLine()) != null) {
+                if (i == 0) {
+                    width = Integer.parseInt(input);
+                    i++;
+                } else if (i == 1) {
+                    height = Integer.parseInt(input);
+                    this.matrix = new int[width][height];
+                    i++;
+                } else {
+                    System.out.println("Nuts");
+                }
+            }
+        } catch(IOException err) {
+            System.err.println("IO error.");
+        }
     }
 
     // Gets and sets.
@@ -113,6 +139,18 @@ public class Matrix {
         } else {
             return null;
         }
+    }
+
+    // format();
+    // Returns matrix in JTable readable format.
+    public String[][] format() {
+        String[][] string = new String[this.getWidth()][this.getHeight()];
+        for (int i = 0; i < this.getHeight(); i++) {
+            for (int j = 0; j < this.getWidth(); j++) {
+                string[j][i] = Integer.toString(this.getEntry(j, i));
+            }
+        }
+        return string;
     }
 
     // toString();

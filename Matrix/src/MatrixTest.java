@@ -1,4 +1,13 @@
+import javax.swing.*;
+
 public class MatrixTest {
+
+    // Declarations and init.
+    private static JFrame GUI = new JFrame(); // New JFrame from Swing.
+    private static JTable table; // Create table object.
+    private static String ans; // used for answering questions.
+
+
     public static void main(String[] args) {
         // Addition test.
         /*// Create three matrices used for calculation.
@@ -34,8 +43,8 @@ public class MatrixTest {
         System.out.println("Sum of m2 and m3:");
         if (answer != null) { System.out.println(answer); } else { System.out.println("These matrices cannot be added."); }*/
 
-        // Multiplication test.
-        /* Matrix m1 = new Matrix(4, 2);
+        /*// Multiplication test.
+         Matrix m1 = new Matrix(4, 2);
         Matrix m2 = new Matrix(2, 4);
 
         m1.setEntry(0,0,3);
@@ -63,10 +72,24 @@ public class MatrixTest {
 
         m3 = m1.multiply(m2);
 
-        System.out.println(m3);*/
+        System.out.println(m3);
 
-        // Init Swing.
-        
+        // Set table information.
+        String[] columnNames = new String[m3.getWidth()];
+        for (int i = 0; i < columnNames.length; i++) { columnNames[i] = " "; }
+        table = new JTable(m3.format(), columnNames);
+        table.setTableHeader(null);
 
+        // Set sizes and locations.
+        GUI.setLayout(null);
+        GUI.setSize(400, 400);
+        table.setSize(300, 300);
+        table.setLocation(50 , 50);
+
+        // Add table and set GUI visible to user.
+        GUI.add(table);
+        GUI.setVisible(true);*/
+        Matrix m1 = new Matrix("m1.txt");
+        System.out.println(m1);
     }
 }
